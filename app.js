@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Platform,
 } from 'react-native';
 
 class App extends Component {
@@ -25,7 +26,7 @@ var styles = StyleSheet.create({
     backgroundColor: "#EEEEEE",
   },
   welcome: {
-    fontSize: 20,
+    fontSize: (Platform.OS == 'ios' ? 20 : 22),
     textAlign: "center",
     margin: 10,
   },
