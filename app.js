@@ -1,44 +1,10 @@
-import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Platform,
 } from 'react-native';
-
-class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>React Native开发</Text>
-        <Text style={styles.welcome2}>hello world!</Text>
-      </View>
-    )
-  }
-}
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#EEEEEE",
-  },
-  welcome: {
-    fontSize: (Platform.OS == 'ios' ? 20 : 22),
-    textAlign: "center",
-    margin: 10,
-  },
-  welcome2: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5,
-  }
-})
+import LoginScreen from './app/login';
 
 const AppStart = () => {
-  AppRegistry.registerComponent("react_native_advanced", () => { return App })
+  AppRegistry.registerComponent("react_native_advanced", () => { return LoginScreen })
 }
 
 module.exports = AppStart;
