@@ -5,11 +5,13 @@ import NavigatorTest from './app/welcome/navigator_test';
 import TabbarTest from './app/welcome/tabbar_test';
 import ProductsScreen from './app/products';
 import ProductShowScreen from './app/products/show';
+import WebViewTest from './app/webview_test';
 
 Navigation.registerComponent('LoginScreen', () => LoginScreen);
 Navigation.registerComponent('FlexLayout', () => FlexLayout);
 Navigation.registerComponent('ProductsScreen', () => ProductsScreen);
 Navigation.registerComponent('ProductShowScreen', () => ProductShowScreen);
+Navigation.registerComponent('WebViewTest', () => WebViewTest);
 
 const AppStart = () => {
   Navigation.startTabBasedApp({
@@ -27,6 +29,13 @@ const AppStart = () => {
         icon: require('./img/menu.png'),
         selectedIcon: require('./img/menu_selected.png'),
         title: "商品",
+      },
+      {
+        label: "WebView",
+        screen: 'WebViewTest',
+        icon: require('./img/safari.png'),
+        selectedIcon: require('./img/safari_selected.png'),
+        title: "WebView",
       },
       {
         label: "测试",
