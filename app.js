@@ -3,9 +3,13 @@ import LoginScreen from './app/login';
 import FlexLayout from './app/flex_layout';
 import NavigatorTest from './app/welcome/navigator_test';
 import TabbarTest from './app/welcome/tabbar_test';
+import ProductsScreen from './app/products';
+import ProductShowScreen from './app/products/show';
 
 Navigation.registerComponent('LoginScreen', () => LoginScreen);
 Navigation.registerComponent('FlexLayout', () => FlexLayout);
+Navigation.registerComponent('ProductsScreen', () => ProductsScreen);
+Navigation.registerComponent('ProductShowScreen', () => ProductShowScreen);
 
 const AppStart = () => {
   Navigation.startTabBasedApp({
@@ -18,10 +22,17 @@ const AppStart = () => {
         title: "登录",
       },
       {
-        label: "测试",
-        screen: 'FlexLayout',
+        label: "商品",
+        screen: 'ProductsScreen',
         icon: require('./img/menu.png'),
         selectedIcon: require('./img/menu_selected.png'),
+        title: "商品",
+      },
+      {
+        label: "测试",
+        screen: 'FlexLayout',
+        icon: require('./img/user.png'),
+        selectedIcon: require('./img/user_selected.png'),
         title: "Flex测试",
       }
     ]
