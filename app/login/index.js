@@ -10,7 +10,11 @@ import {
   TouchableWithoutFeedback,
   Image,
   ScrollView,
+
+  Alert,
+  AsyncStorage,
 } from 'react-native';
+import { HelperMemo } from '../helper';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -19,6 +23,8 @@ export default class LoginScreen extends Component {
     this.state = {
       email: '',
       password: '',
+
+      isLoggedIn: !!HelperMemo.user_data,
     }
   }
 
@@ -27,15 +33,41 @@ export default class LoginScreen extends Component {
   }
 
   _login() {
+    if (this.state.email.length == 0) {
+      Alert.alert("提示", "请输入邮箱!");
+      return;
+    }
+
+    let _this = this;
+    let data = {email: this.state.email};
+    AsyncStorage.setItem('user_data', JSON.stringify(data), () => {
+      HelperMemo['user_data'] = data;
+
+      Alert.alert("提示", "登录成功!");
+      _this.setState({isLoggedIn: true});
+    })
+
     console.log(this.state.email + " " + this.state.password);
   }
 
-  render() {
+  _logout() {
+    let _this = this;
+
+    AsyncStorage.removeItem('user_data', () => {
+      HelperMemo['user_data'] = null;
+
+      Alert.alert("提示", "退出成功!");
+      _this.setState({isLoggedIn: false});
+    })
+  }
+
+  _renderLogin() {
     return (
       <ScrollView
         style={styles.container}
         contentContainerStyle={{}}
-        horizontal={false}>
+        horizontal={false}
+        showsVerticalScrollIndicator={true}>
         <View style={styles.header}>
           <Image
             style={{width: 50, height: 50, borderRadius: 25}}
@@ -73,6 +105,34 @@ export default class LoginScreen extends Component {
         </TouchableHighlight>
       </ScrollView>
     )
+  }
+
+  _renderUserInfo() {
+    return (
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{}}
+        horizontal={false}
+        showsVerticalScrollIndicator={true}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{HelperMemo.user_data.email}</Text>
+        </View>
+        <TouchableHighlight
+          style={styles.btnContainer}
+          onPress={() => this._logout()}
+          underlayColor="red">
+          <Text style={styles.bigBtn}>退出</Text>
+        </TouchableHighlight>
+      </ScrollView>
+    )
+  }
+
+  render() {
+    if (this.state.isLoggedIn) {
+      return this._renderUserInfo();
+    } else {
+      return this._renderLogin();
+    }
   }
 }
 
