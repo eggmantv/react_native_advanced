@@ -6,12 +6,14 @@ import TabbarTest from './app/welcome/tabbar_test';
 import ProductsScreen from './app/products';
 import ProductShowScreen from './app/products/show';
 import WebViewTest from './app/webview_test';
+import AnimatedTest from './app/animated_test';
 
 Navigation.registerComponent('LoginScreen', () => LoginScreen);
 Navigation.registerComponent('FlexLayout', () => FlexLayout);
 Navigation.registerComponent('ProductsScreen', () => ProductsScreen);
 Navigation.registerComponent('ProductShowScreen', () => ProductShowScreen);
 Navigation.registerComponent('WebViewTest', () => WebViewTest);
+Navigation.registerComponent('AnimatedTest', () => AnimatedTest);
 
 const AppStart = () => {
   Navigation.startTabBasedApp({
@@ -38,11 +40,11 @@ const AppStart = () => {
         title: "WebView",
       },
       {
-        label: "测试",
-        screen: 'FlexLayout',
+        label: "Animated",
+        screen: 'AnimatedTest',
         icon: require('./img/user.png'),
         selectedIcon: require('./img/user_selected.png'),
-        title: "Flex测试",
+        title: "Animated",
       }
     ]
   })
