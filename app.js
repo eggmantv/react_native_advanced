@@ -7,6 +7,7 @@ import ProductsScreen from './app/products';
 import ProductShowScreen from './app/products/show';
 import WebViewTest from './app/webview_test';
 import AnimatedTest from './app/animated_test';
+import OthersTest from './app/others_test';
 
 Navigation.registerComponent('LoginScreen', () => LoginScreen);
 Navigation.registerComponent('FlexLayout', () => FlexLayout);
@@ -14,6 +15,7 @@ Navigation.registerComponent('ProductsScreen', () => ProductsScreen);
 Navigation.registerComponent('ProductShowScreen', () => ProductShowScreen);
 Navigation.registerComponent('WebViewTest', () => WebViewTest);
 Navigation.registerComponent('AnimatedTest', () => AnimatedTest);
+Navigation.registerComponent('OthersTest', () => OthersTest);
 
 const AppStart = () => {
   Navigation.startTabBasedApp({
@@ -45,7 +47,14 @@ const AppStart = () => {
         icon: require('./img/user.png'),
         selectedIcon: require('./img/user_selected.png'),
         title: "Animated",
-      }
+      },
+      {
+        label: "Others",
+        screen: 'OthersTest',
+        icon: require('./img/box.png'),
+        selectedIcon: require('./img/box_selected.png'),
+        title: "Others",
+      },
     ]
   })
 }
