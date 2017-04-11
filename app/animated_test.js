@@ -6,10 +6,12 @@ import {
 	View,
   Animated,
   Dimensions,
+	PanResponder,
 } from 'react-native';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
-const TABS_COUNT = 2;
+const TABS = ["tab1", "tab2"];
+const TABS_COUNT = TABS.length;
 
 export default class AnimatedTest extends Component {
 
@@ -20,6 +22,49 @@ export default class AnimatedTest extends Component {
       currentTab: 'tab1',
       tabLineAnimatedValue: new Animated.Value(0),
 		}
+	}
+
+	componentWillMount() {
+		let _this = this;
+
+		let release = (e, gestureState) => {
+			let relativeDistance = gestureState.dx / DEVICE_WIDTH,
+					velocityX = gestureState.vx;
+
+			let step = 0;
+			if (relativeDistance < -0.5 || (relativeDistance < 0 && velocityX <= -0.03)) {
+				step = 1;
+			} else if (relativeDistance >= 0.5 || (relativeDistance > 0 && velocityX >= 0.03)) {
+				step = -1;
+			}
+
+			_this.movePage(step);
+		}
+
+		this._panResponder = PanResponder.create({
+			onMoveShouldSetPanResponder: (e, gestureState) => {
+				let tabIndex = TABS.indexOf(_this.state.currentTab);
+				if (tabIndex == 0 && gestureState.dx > 0) {
+					return false;
+				}
+				if (tabIndex == TABS_COUNT - 1 && gestureState.dx < 0) {
+					return false;
+				}
+
+				return Math.abs(gestureState.dx) > Math.abs(gestureState.dy);
+			},
+			onPanResponderMove: (e, gestureState) => {
+				let offsetX = -gestureState.dx / DEVICE_WIDTH + TABS.indexOf(_this.state.currentTab);
+				_this.state.tabLineAnimatedValue.setValue(offsetX);
+			},
+			onPanResponderRelease: release,
+			onPanResponderTerminate: release,
+		})
+	}
+
+	movePage(step) {
+		let nextTabIndex = TABS.indexOf(this.state.currentTab) + step;
+		this.touchTab(TABS[nextTabIndex]);
 	}
 
 	render() {
@@ -52,14 +97,16 @@ export default class AnimatedTest extends Component {
             </View>
           </TouchableOpacity>
         </View>
-				<Animated.View style={[styles.content, {
+				<Animated.View
+					style={[styles.content, {
             transform: [{
               translateX: this.state.tabLineAnimatedValue.interpolate({
                 inputRange: [0, 1],
                 outputRange: [0, -DEVICE_WIDTH]
               }),
             }]
-          }]}>
+          }]}
+					{...this._panResponder.panHandlers}>
 		    	<View style={styles.slideContent}>
 		    		<Text style={styles.slideContentText}>Tab 1 content</Text>
 		    	</View>
