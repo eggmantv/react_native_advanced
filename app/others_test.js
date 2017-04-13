@@ -25,6 +25,8 @@ export default class OthersTest extends Component {
         <ActionSheetIOSTest />
 
 				<LinkingTest url="https://eggman.tv" text="打开URL" />
+
+				<SystemNotificationTest navigator={this.props.navigator}  />
       </ScrollView>
     )
   }
@@ -101,6 +103,21 @@ class LinkingTest extends Component {
         });
       }}>
         <Text style={styles.btnText}>{this.props.text}</Text>
+      </TouchableHighlight>
+    )
+  }
+}
+
+class SystemNotificationTest extends Component {
+	render() {
+    return (
+      <TouchableHighlight style={styles.btn} onPress={() => {
+        this.props.navigator.push({
+					title: "Notification",
+					screen: "SystemNotification"
+				})
+      }}>
+        <Text style={styles.btnText}>Push Notification</Text>
       </TouchableHighlight>
     )
   }
