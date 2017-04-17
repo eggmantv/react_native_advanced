@@ -16,6 +16,9 @@ import {
 } from 'react-native';
 import { HelperMemo } from '../helper';
 
+import reactMixin from 'react-mixin';
+import TimerMixin from 'react-timer-mixin';
+
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +29,16 @@ export default class LoginScreen extends Component {
 
       isLoggedIn: !!HelperMemo.user_data,
     }
+  }
+
+  componentDidMount() {
+    this.setTimeout(() => {
+      Alert.alert("hello from timeer")
+    }, 2000);
+
+    this.requestAnimationFrame(() => {
+      
+    })
   }
 
   _touchHeader() {
@@ -135,6 +148,8 @@ export default class LoginScreen extends Component {
     }
   }
 }
+
+reactMixin(LoginScreen.prototype, TimerMixin);
 
 var styles = StyleSheet.create({
   container: {

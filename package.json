@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "react": "15.4.2",
+    "react-mixin": "^3.0.5",
     "react-native": "0.42.3",
-    "react-native-navigation": "^2.0.0-experimental.281"
+    "react-native-navigation": "^2.0.0-experimental.281",
+    "react-timer-mixin": "^0.13.3"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

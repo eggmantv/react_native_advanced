@@ -71,6 +71,9 @@ export default class ProductsScreen extends Component {
           enableEmptySections={true}
           onEndReached={this._reachEnd.bind(this)}
           onEndReachedThreshold={2}
+          initialListSize={1}
+          scrollRenderAheadDistance={0}
+          pageSize={10}
           refreshControl={
             <RefreshControl refreshing={this.state.isRefreshing}
               onRefresh={this._refreshData.bind(this)} />
