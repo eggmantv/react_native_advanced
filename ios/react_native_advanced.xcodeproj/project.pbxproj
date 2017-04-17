@@ -37,6 +37,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A4798B9D1E98B36F0006802D /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4798B9C1E98B3480006802D /* libReactNativeNavigation.a */; };
+		A4B5401C1EA4A23D008C1640 /* NativeInterfaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B5401B1EA4A23D008C1640 /* NativeInterfaceTest.m */; };
 		A4F00A001E9F676500843CB4 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F009ED1E9F674700843CB4 /* libRCTPushNotification.a */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +280,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A4798B7E1E98B3480006802D /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
+		A4B5401A1EA4A23D008C1640 /* NativeInterfaceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeInterfaceTest.h; sourceTree = "<group>"; };
+		A4B5401B1EA4A23D008C1640 /* NativeInterfaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeInterfaceTest.m; sourceTree = "<group>"; };
 		A4F009DD1E9F674700843CB4 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		A4F00A011E9F685A00843CB4 /* react_native_advanced.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = react_native_advanced.entitlements; path = react_native_advanced/react_native_advanced.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -425,6 +428,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A4B5401A1EA4A23D008C1640 /* NativeInterfaceTest.h */,
+				A4B5401B1EA4A23D008C1640 /* NativeInterfaceTest.m */,
 			);
 			name = react_native_advanced;
 			sourceTree = "<group>";
@@ -990,6 +995,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B5401C1EA4A23D008C1640 /* NativeInterfaceTest.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

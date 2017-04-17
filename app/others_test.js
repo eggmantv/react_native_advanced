@@ -11,6 +11,8 @@ import {
   AlertIOS,
   ActionSheetIOS,
 	Linking,
+
+	NativeModules,
 } from 'react-native';
 
 export default class OthersTest extends Component {
@@ -27,6 +29,8 @@ export default class OthersTest extends Component {
 				<LinkingTest url="https://eggman.tv" text="打开URL" />
 
 				<SystemNotificationTest navigator={this.props.navigator}  />
+
+				<NativeInterfaceTestButton />
       </ScrollView>
     )
   }
@@ -120,6 +124,26 @@ class SystemNotificationTest extends Component {
         <Text style={styles.btnText}>Push Notification</Text>
       </TouchableHighlight>
     )
+  }
+}
+
+class NativeInterfaceTestButton extends Component {
+	render() {
+		if (Platform.OS === 'ios') {
+	    return (
+	      <TouchableHighlight style={styles.btn} onPress={() => {
+					let nativeInterface = NativeModules.NativeInterfaceTest;
+					nativeInterface.getStatusBarHeight((error, data) => {
+						Alert.alert(JSON.stringify(data));
+					})
+	      }}>
+	        <Text style={styles.btnText}>调用iOS原生接口</Text>
+	      </TouchableHighlight>
+	    )
+		}
+		else {
+			return null;
+		}
   }
 }
 

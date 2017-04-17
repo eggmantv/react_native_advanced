@@ -33,11 +33,11 @@ export default class LoginScreen extends Component {
 
   componentDidMount() {
     this.setTimeout(() => {
-      Alert.alert("hello from timeer")
+      // Alert.alert("hello from timeer")
     }, 2000);
 
     this.requestAnimationFrame(() => {
-      
+
     })
   }
 
